@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cat_owners_form_app/resulting_route.dart';
 
 enum GenderList { male, female }
 
@@ -168,18 +169,24 @@ class MyFormState extends State {
                   !_feedDry && !_feedWet && !_feedNatural) {
                     message = "Данные неполны";
                     messageColor = Colors.red;
-                  }
 
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text(message),
-                    duration: const Duration(seconds: 3),
-                    backgroundColor: messageColor,
-                    action: SnackBarAction(
-                      label: "Ok",
-                      textColor: Colors.black,
-                      onPressed: () {},
-                    ),
-                  ));
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(message),
+                      duration: const Duration(seconds: 3),
+                      backgroundColor: messageColor,
+                      action: SnackBarAction(
+                        label: "Ok",
+                        textColor: Colors.black,
+                        onPressed: () {},
+                      ),
+                    ));
+                  }
+                  else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ResultingRoute()),
+                    );
+                  }
                 },
               )
             ]))));
